@@ -6,7 +6,7 @@ Hello! 👋 I'm **Harsh Yadav**, a passionate developer who builds interactive w
 
 ### About Me
 
-With a strong analytical background and expertise in a variety of technologies, I'm a dedicated problem-solver. I've actively honed my skills by solving over **650 problems on LeetCode** and maintaining a contest max rating of **1724**, demonstrating my commitment to continuous growth and technical excellence.
+With a strong analytical background and expertise in a variety of technologies, I'm a dedicated problem-solver. I've actively honed my skills by solving over **850+ problems on LeetCode** and maintaining a contest max rating of **1724**, demonstrating my commitment to continuous growth and technical excellence.
 
 ---
 
