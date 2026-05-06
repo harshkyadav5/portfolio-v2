@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Harsh Yadav — Portfolio Design System
+  Cinematic editorial: deep onyx, warm bronze bloom, oversized type, slow motion.
+  All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light mode — warm paper */
+    --background: 38 28% 96%;
+    --foreground: 24 14% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 14% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 14% 10%;
+
+    --primary: 24 14% 10%;
+    --primary-foreground: 38 28% 96%;
+
+    --secondary: 30 15% 92%;
+    --secondary-foreground: 225 8% 22%;
+
+    --muted: 30 14% 90%;
+    --muted-foreground: 24 6% 38%;
+
+    --accent: 22 90% 55%;
+    --accent-foreground: 0 0% 100%;
+    --accent-soft: 22 70% 95%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 12% 86%;
+    --input: 30 12% 86%;
+    --ring: 24 14% 10%;
+
+    --radius: 1.25rem;
+
+    --glass-bg: 0 0% 100% / 0.55;
+    --glass-border: 0 0% 100% / 0.6;
+    --glass-shadow: 24 25% 18% / 0.1;
+    --glass-highlight: 0 0% 100% / 0.85;
+
+    --surface-soft: 30 18% 95%;
+
+    --gradient-warm:
+      radial-gradient(1200px circle at 8% -8%, hsl(22 95% 86% / 0.85), transparent 50%),
+      radial-gradient(1000px circle at 95% 5%, hsl(28 90% 88% / 0.75), transparent 55%),
+      radial-gradient(1100px circle at 80% 95%, hsl(40 80% 90% / 0.55), transparent 55%),
+      linear-gradient(180deg, hsl(38 28% 97%) 0%, hsl(34 24% 95%) 100%);
+
+    --gradient-text: linear-gradient(141deg, hsl(24 4% 60%) 0%, hsl(24 14% 12%) 100%);
+
+    --shadow-sm: 0 1px 2px hsl(var(--glass-shadow));
+    --shadow-glass: 0 8px 32px hsl(var(--glass-shadow)), inset 0 1px 0 hsl(0 0% 100% / 0.7);
+    --shadow-glass-lg: 0 24px 70px hsl(var(--glass-shadow)), inset 0 1px 0 hsl(0 0% 100% / 0.85);
+    --shadow-pop: 0 30px 80px -20px hsl(24 25% 20% / 0.18);
+
+    --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dark {
+    /* Cinematic onyx with warm bronze bloom */
+    --background: 24 12% 6%;
+    --foreground: 36 30% 94%;
+
+    --card: 24 10% 10%;
+    --card-foreground: 36 30% 94%;
+
+    --popover: 24 12% 8%;
+    --popover-foreground: 36 30% 94%;
+
+    --primary: 36 30% 94%;
+    --primary-foreground: 24 12% 7%;
+
+    --secondary: 24 8% 14%;
+    --secondary-foreground: 36 30% 94%;
+
+    --muted: 24 8% 12%;
+    --muted-foreground: 30 8% 62%;
+
+    --accent: 22 92% 60%;
+    --accent-foreground: 24 12% 7%;
+    --accent-soft: 22 60% 16%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 24 8% 18%;
+    --input: 24 8% 18%;
+    --ring: 36 30% 94%;
+
+    --glass-bg: 24 10% 12% / 0.55;
+    --glass-border: 36 20% 80% / 0.08;
+    --glass-shadow: 0 0% 0% / 0.5;
+    --glass-highlight: 0 0% 100% / 0.06;
+
+    --surface-soft: 24 10% 10%;
+
+    /* Cinematic bronze radial bloom on near-black */
+    --gradient-warm:
+      radial-gradient(1400px circle at 50% 35%, hsl(22 70% 22% / 0.55), transparent 60%),
+      radial-gradient(1100px circle at 90% 90%, hsl(220 50% 14% / 0.45), transparent 55%),
+      radial-gradient(900px circle at 8% 92%, hsl(28 60% 18% / 0.35), transparent 55%),
+      linear-gradient(180deg, hsl(24 12% 6%) 0%, hsl(24 14% 4%) 100%);
+
+    --gradient-text: linear-gradient(141deg, hsl(30 8% 50%) 0%, hsl(36 30% 94%) 100%);
+
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.5), inset 0 1px 0 hsl(0 0% 100% / 0.06);
+    --shadow-glass-lg: 0 24px 70px hsl(0 0% 0% / 0.55), inset 0 1px 0 hsl(0 0% 100% / 0.08);
+    --shadow-pop: 0 30px 80px -20px hsl(0 0% 0% / 0.7);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Inter Tight",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    background-color: hsl(var(--background));
+    background-image: var(--gradient-warm);
+    background-attachment: fixed;
+    transition:
+      background-color 0.5s var(--ease-apple),
+      color 0.5s var(--ease-apple);
+    overflow-x: clip;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Grainy noise overlay across the entire page — dark gradient + film grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.18;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+    background-size: 220px 220px;
+  }
+  .dark body::before {
+    opacity: 0.22;
+    mix-blend-mode: soft-light;
+  }
+
+  /* Ensure app content sits above the grain layer */
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ───── Hide the native scrollbar entirely — custom rail is rendered in React ───── */
+  /* Firefox */
+  html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  /* WebKit / Chromium / Safari — collapse all scrollbar parts */
+  ::-webkit-scrollbar,
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-button,
+  ::-webkit-scrollbar-corner {
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+    display: none !important;
+  }
+
+  /* Lenis smooth-scroll defaults — buttery vertical scroll */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.85);
+    color: hsl(var(--accent-foreground));
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: "Inter Tight", system-ui, sans-serif;
+    letter-spacing: -0.04em;
+  }
+  .font-serif-display {
+    font-family: "Instrument Serif", "Times New Roman", serif;
+    font-style: italic;
+    letter-spacing: -0.02em;
+  }
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  /* Vibrancy surfaces */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+  .glass-strong {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass-lg);
+  }
+  .glass-hover {
+    transition:
+      transform 0.5s var(--ease-apple),
+      box-shadow 0.5s var(--ease-apple),
+      background 0.5s var(--ease-apple);
+    will-change: transform;
+  }
+  .glass-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-pop);
+  }
+
+  /* Subtle film grain overlay */
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  .text-gradient-hero {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1px hsl(var(--foreground) / 0.55);
+    color: transparent;
+  }
+
+  .text-gradient-bronze {
+    background: linear-gradient(180deg, hsl(28 55% 58%) 0%, hsl(22 65% 48%) 55%, hsl(18 70% 42%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .ink-link {
+    @apply relative px-0.5 transition-all duration-200;
+    box-shadow: inset 0 -1px 0 0 hsl(var(--border));
+  }
+  .ink-link:hover {
+    color: hsl(var(--accent));
+  }
+
+  .section {
+    @apply py-24 md:py-36;
+  }
+
+  /* Smooth marquee strip */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .marquee-track {
+    animation: none !important;
+  }
+}
